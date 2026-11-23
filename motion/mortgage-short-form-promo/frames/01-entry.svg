@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#123576"/>
+  <rect x="585" y="60" width="430" height="780" rx="26" fill="#1B4698"/>
+  <text x="620" y="105" fill="#fff" font-family="Arial, sans-serif" font-size="15" font-weight="700">9:41</text><text x="942" y="105" fill="#fff" font-family="Arial" font-size="18">●●●</text>
+  <rect x="620" y="150" width="58" height="58" rx="18" fill="#F1AF12"/><text x="638" y="190" fill="#0054FD" font-family="Arial" font-size="31">⌂</text>
+  <text x="620" y="255" fill="#F1AF12" font-family="Arial" font-size="18" font-weight="700">Ипотека</text>
+  <text x="620" y="310" fill="#fff" font-family="Arial" font-size="42" font-weight="700">Начнём с короткой</text><text x="620" y="358" fill="#fff" font-family="Arial" font-size="42" font-weight="700">анкеты</text>
+  <text x="620" y="410" fill="#D9E4FF" font-family="Arial" font-size="20">Несколько вопросов — и эксперт</text><text x="620" y="438" fill="#D9E4FF" font-family="Arial" font-size="20">поможет с ипотекой.</text>
+  <rect x="620" y="500" width="360" height="74" rx="16" fill="#ffffff18" stroke="#ffffff35"/><circle cx="650" cy="537" r="14" fill="#F1AF12"/><text x="645" y="544" fill="#123576" font-family="Arial" font-size="18" font-weight="700">✓</text><text x="680" y="533" fill="#fff" font-family="Arial" font-size="19" font-weight="700">Расчёт сохранён</text><text x="680" y="556" fill="#D9E4FF" font-family="Arial" font-size="15">Продолжим с параметрами из калькулятора.</text>
+  <rect x="620" y="735" width="360" height="58" rx="14" fill="#F5631A"/><text x="739" y="772" fill="#fff" font-family="Arial" font-size="20" font-weight="700">Продолжить</text><circle cx="906" cy="758" r="19" fill="none" stroke="#fff" stroke-width="3" opacity=".9"/><path d="M899 758h14M907 750l8 8-8 8" stroke="#fff" stroke-width="3" fill="none"/>
+</svg>

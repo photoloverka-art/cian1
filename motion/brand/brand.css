@@ -1,0 +1,31 @@
+/* Бренд-профиль ипотечного прототипа: значения взяты из src/styles.css. */
+@font-face {
+  font-family: 'Brand Sans';
+  src: url(fonts/Manrope-Variable.ttf) format('truetype');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  --font: 'Brand Sans', system-ui, sans-serif;
+  --w-regular: 400;
+  --w-medium: 500;
+  --w-bold: 650;
+  --accent: #F5631A;
+  --accent-ink: #FFFFFF;
+  --ink: #172234;
+  --ink2: #637083;
+  --ink3: #8993A2;
+  --line: #DCE3EB;
+  --line2: #C9D3E0;
+  --soft: #F2F6FC;
+  --dark: #123576;
+  --surface: #FFFFFF;
+  --bg: #123576;
+  --dim: 18,53,118;
+  --sub-bg: rgba(18,53,118,.88);
+  --cursor: #172234;
+  --r-app: 20px;
+  --ring-stops: #0054FD, #1B4698, #F5631A, #F1AF12, #0054FD;
+}

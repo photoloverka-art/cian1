@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#123576"/><rect x="585" y="60" width="430" height="780" rx="26" fill="#1B4698"/>
+  <circle cx="800" cy="255" r="54" fill="#F1AF12"/><text x="781" y="273" fill="#123576" font-family="Arial" font-size="50" font-weight="700">✓</text>
+  <text x="733" y="344" fill="#F1AF12" font-family="Arial" font-size="18" font-weight="700">Заявка принята</text><text x="660" y="404" fill="#fff" font-family="Arial" font-size="38" font-weight="700">Эксперт свяжется</text><text x="750" y="448" fill="#fff" font-family="Arial" font-size="38" font-weight="700">с вами</text>
+  <text x="653" y="502" fill="#D9E4FF" font-family="Arial" font-size="18">Позвоним 23 нояб., 10:00–12:00.</text><text x="648" y="529" fill="#D9E4FF" font-family="Arial" font-size="18">Эксперт уточнит детали и поможет</text><text x="692" y="556" fill="#D9E4FF" font-family="Arial" font-size="18">подготовить заявку в банк.</text>
+  <rect x="620" y="620" width="360" height="94" rx="16" fill="#ffffff16" stroke="#ffffff30"/><text x="640" y="653" fill="#fff" font-family="Arial" font-size="18" font-weight="700">Что будет дальше</text><text x="640" y="683" fill="#D9E4FF" font-family="Arial" font-size="15">1. Позвоним в выбранное время</text><text x="640" y="705" fill="#D9E4FF" font-family="Arial" font-size="15">2. Уточним условия и документы</text>
+</svg>
