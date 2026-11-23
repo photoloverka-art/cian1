@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 type Step = 0 | 1 | 2 | 3 | 4 | 5
 type Option = { value: string; label: string; caption?: string }
@@ -23,6 +23,15 @@ type FormState = {
   loanPayment: string
   callSlot: string
   marketingConsent: boolean
+}
+
+type MetricParameters = Record<string, string | number | boolean>
+
+// Замените 0 на идентификатор реального счётчика при подключении Метрики.
+const METRIKA_COUNTER_ID = 0
+
+function trackMetric(goal: string, parameters: MetricParameters) {
+  console.info('[Metrika stub]', { counterId: METRIKA_COUNTER_ID, goal, parameters })
 }
 
 const entryContext: MortgageEntryContext = {
@@ -95,8 +104,71 @@ function ChoiceGroup({ value, options, onChange, ariaLabel }: { value: string; o
   )
 }
 
+const mapScreens = [
+  { step: '0', title: 'Вход из калькулятора', copy: 'Короткая анкета вместо полной банковской формы', event: 'mortgage_form_open' },
+  { step: '1', title: 'Контакты', copy: 'ФИО, почта и телефон из профиля', event: 'mortgage_form_step_view' },
+  { step: '2', title: 'О покупке', copy: 'Срок, объект и условная помощь с подбором', event: 'mortgage_form_step_view' },
+  { step: '3', title: 'Финансы', copy: 'Доход и действующие кредиты', event: 'mortgage_form_step_view' },
+  { step: '4', title: 'Звонок эксперта', copy: 'Дата, время и согласия', event: 'mortgage_form_step_view' },
+  { step: '5', title: 'Успех', copy: 'Подтверждение звонка в выбранный слот', event: 'mortgage_form_submitted' },
+]
+
+function ScenarioMap() {
+  return (
+    <main className="map-page">
+      <header className="map-header">
+        <div>
+          <a className="map-back" href="/">← К анкете</a>
+          <span className="eyebrow">Карта сценария</span>
+          <h1>Короткая ипотечная анкета</h1>
+          <p>Путь от ипотечного калькулятора до звонка эксперта. Подписи на карточках и переходах — цели Яндекс Метрики.</p>
+        </div>
+        <span className="metric-stub">Счётчик: {METRIKA_COUNTER_ID || 'заглушка'}</span>
+      </header>
+
+      <section className="map-flow" aria-label="Карта экранов анкеты">
+        {mapScreens.map((screen, index) => (
+          <div className="map-sequence" key={screen.step}>
+            <article className="map-screen">
+              <div className="map-phone-bar"><span>9:41</span><span>●●●</span></div>
+              <span className="map-step">Экран {screen.step}</span>
+              <h2>{screen.title}</h2>
+              <p>{screen.copy}</p>
+              <code>{screen.event} · step={screen.step}</code>
+              {index > 0 && index < 5 && <small>Ошибки полей → <code>mortgage_form_validation_error · step={screen.step}</code></small>}
+            </article>
+            {index < mapScreens.length - 1 && (
+              <div className="map-arrow" aria-label={`Переход к экрану ${Number(screen.step) + 1}`}>
+                <span>{index === 0 ? 'mortgage_form_start · step=0' : `mortgage_form_step_continue · step=${screen.step}`}</span>
+                <i>→</i>
+              </div>
+            )}
+          </div>
+        ))}
+      </section>
+
+      <section className="ab-section" aria-labelledby="ab-title">
+        <div className="section-kicker">Эксперимент</div>
+        <h2 id="ab-title">A/B-тест: короткая анкета против полной</h2>
+        <div className="ab-grid">
+          <article><span>Гипотеза</span><p>Короткая анкета снизит барьер входа и увеличит долю отправленных заявок без ухудшения качества лидов.</p></article>
+          <article><span>Вариант A</span><p>Текущий путь: переход в полную банковскую анкету с паспортными данными и работодателем.</p></article>
+          <article><span>Вариант B</span><p>Новая короткая анкета из четырёх шагов; остальные данные эксперт собирает во время звонка.</p></article>
+          <article><span>Основная метрика</span><p><code>mortgage_form_submitted / mortgage_form_open</code> — конверсия из открытия формы в отправку.</p></article>
+          <article><span>Ограничивающая метрика</span><p>Доля заявок, с которыми эксперт успешно связался в течение 24 часов; падение не более 3 п.п.</p></article>
+          <article><span>Объём и срок</span><p>Не менее 5 000 уникальных пользователей на вариант (10 000 всего), две полные недели или до достижения выборки — что наступит позже.</p></article>
+        </div>
+        <p className="ab-note">Во все цели передаём <code>step</code>, <code>screen</code>, <code>source</code> и <code>ab_variant</code>, чтобы сравнить воронку и причины выхода.</p>
+      </section>
+    </main>
+  )
+}
+
 function App() {
+  if (window.location.pathname === '/map') return <ScenarioMap />
+
   const standardScenario = new URLSearchParams(window.location.search).get('scenario') === 'standard'
+  const abVariant = new URLSearchParams(window.location.search).get('ab') ?? 'B'
   const activeContext = standardScenario
     ? { ...entryContext, isFamilyMortgage: false, isNewBuild: false }
     : entryContext
@@ -121,6 +193,16 @@ function App() {
   const showConsultantQuestion = activeContext.isFamilyMortgage || activeContext.isNewBuild
   const update = <K extends keyof FormState>(key: K, value: FormState[K]) => setForm((current) => ({ ...current, [key]: value }))
 
+  useEffect(() => {
+    trackMetric('mortgage_form_open', { step: 0, screen: 'entry', source: activeContext.source, ab_variant: abVariant })
+  }, [abVariant, activeContext.source])
+
+  useEffect(() => {
+    if (step > 0 && step < 5) {
+      trackMetric('mortgage_form_step_view', { step, screen: `step_${step}`, source: activeContext.source, ab_variant: abVariant })
+    }
+  }, [step, abVariant, activeContext.source])
+
   const validate = () => {
     const nextErrors: string[] = []
     if (step === 1) {
@@ -141,12 +223,16 @@ function App() {
     }
     if (step === 4 && !form.callSlot) nextErrors.push('Выберите удобное время для звонка')
     setErrors(nextErrors)
+    if (nextErrors.length) {
+      trackMetric('mortgage_form_validation_error', { step, screen: `step_${step}`, source: activeContext.source, ab_variant: abVariant, field: nextErrors[0] })
+    }
     return nextErrors.length === 0
   }
 
   const continueForm = () => {
     if (!validate()) return
     setErrors([])
+    trackMetric(step === 4 ? 'mortgage_form_submitted' : 'mortgage_form_step_continue', { step, screen: `step_${step}`, source: activeContext.source, ab_variant: abVariant })
     setStep((current) => (current === 4 ? 5 : ((current + 1) as Step)))
   }
 
@@ -173,7 +259,7 @@ function App() {
         </section>
         <div className="entry-spacer" />
         <div className="bottom-action">
-          <button className="primary-button" onClick={() => setStep(1)}>Продолжить</button>
+          <button className="primary-button" onClick={() => { trackMetric('mortgage_form_start', { step: 0, screen: 'entry', source: activeContext.source, ab_variant: abVariant }); setStep(1) }}>Продолжить</button>
           <p>Займёт около 2 минут</p>
         </div>
       </main>
@@ -203,7 +289,7 @@ function App() {
       <header className="form-header">
         <button className="back-button" type="button" onClick={goBack} aria-label="Назад">‹</button>
         <div className="progress-copy"><span>Шаг {step} из 4</span><div className="progress-track"><i style={{ width: `${step * 25}%` }} /></div></div>
-        <button className="close-button" type="button" onClick={() => setStep(0)} aria-label="Закрыть">×</button>
+        <button className="close-button" type="button" onClick={() => { trackMetric('mortgage_form_close', { step, screen: `step_${step}`, source: activeContext.source, ab_variant: abVariant }); setStep(0) }} aria-label="Закрыть">×</button>
       </header>
 
       <section className="form-content">
