@@ -3,3 +3,8 @@ dist/
 *.tsbuildinfo
 vite.config.js
 vite.config.d.ts
+.agents/tools/
+.agents/skills/product-motion/.venv/
+.agents/skills/product-motion/.playwright-browsers/
+motion/*/build/
+motion/*/out/*.mp4

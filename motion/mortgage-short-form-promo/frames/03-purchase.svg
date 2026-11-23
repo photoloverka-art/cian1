@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#123576"/><rect x="585" y="60" width="430" height="780" rx="26" fill="#fff"/>
+  <text x="747" y="105" fill="#637083" font-family="Arial" font-size="14">Шаг 2 из 4</text><rect x="710" y="118" width="180" height="5" rx="3" fill="#E9EEF4"/><rect x="710" y="118" width="90" height="5" rx="3" fill="#0054FD"/>
+  <text x="620" y="176" fill="#0054FD" font-family="Arial" font-size="17" font-weight="700">О покупке</text><text x="620" y="224" fill="#172234" font-family="Arial" font-size="32" font-weight="700">Когда планируете покупку?</text>
+  <rect x="620" y="255" width="360" height="57" rx="14" fill="#FFF5D8" stroke="#F5631A"/><text x="638" y="291" fill="#BD430C" font-family="Arial" font-size="17" font-weight="700">В течение месяца</text><circle cx="950" cy="284" r="9" fill="#F5631A"/>
+  <text x="620" y="358" fill="#172234" font-family="Arial" font-size="21" font-weight="700">Есть объект для покупки?</text><rect x="620" y="378" width="360" height="57" rx="14" fill="#FFF5D8" stroke="#F5631A"/><text x="638" y="414" fill="#BD430C" font-family="Arial" font-size="16" font-weight="700">Хочу понять доступный бюджет</text><circle cx="950" cy="407" r="9" fill="#F5631A"/>
+  <text x="620" y="481" fill="#172234" font-family="Arial" font-size="21" font-weight="700">Помочь с подбором объекта?</text><rect x="620" y="501" width="360" height="57" rx="14" fill="#FFF5D8" stroke="#F5631A"/><text x="638" y="537" fill="#BD430C" font-family="Arial" font-size="16" font-weight="700">Да, нужна помощь</text><circle cx="950" cy="530" r="9" fill="#F5631A"/>
+  <rect x="620" y="735" width="360" height="58" rx="14" fill="#F5631A"/><text x="774" y="772" fill="#fff" font-family="Arial" font-size="20" font-weight="700">Дальше</text>
+</svg>

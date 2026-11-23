@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#123576"/><rect x="585" y="60" width="430" height="780" rx="26" fill="#fff"/>
+  <text x="620" y="106" fill="#172234" font-family="Arial" font-size="15" font-weight="700">‹</text><text x="747" y="105" fill="#637083" font-family="Arial" font-size="14">Шаг 1 из 4</text><rect x="710" y="118" width="180" height="5" rx="3" fill="#E9EEF4"/><rect x="710" y="118" width="45" height="5" rx="3" fill="#0054FD"/>
+  <text x="620" y="176" fill="#0054FD" font-family="Arial" font-size="17" font-weight="700">Контакты</text><text x="620" y="224" fill="#172234" font-family="Arial" font-size="35" font-weight="700">Как с вами связаться?</text><text x="620" y="257" fill="#637083" font-family="Arial" font-size="16">Проверим данные из профиля.</text>
+  <text x="620" y="315" fill="#455468" font-family="Arial" font-size="14" font-weight="700">ФИО</text><rect x="620" y="330" width="360" height="55" rx="13" fill="#fff" stroke="#DCE3EB"/><text x="638" y="365" fill="#172234" font-family="Arial" font-size="17">Елена Воронцова</text>
+  <text x="620" y="426" fill="#455468" font-family="Arial" font-size="14" font-weight="700">Почта</text><rect x="620" y="441" width="360" height="55" rx="13" fill="#fff" stroke="#DCE3EB"/><text x="638" y="476" fill="#172234" font-family="Arial" font-size="17">elena@example.com</text>
+  <text x="620" y="537" fill="#455468" font-family="Arial" font-size="14" font-weight="700">Телефон</text><rect x="620" y="552" width="360" height="55" rx="13" fill="#F6F8FA"/><text x="638" y="587" fill="#59677A" font-family="Arial" font-size="17">+7 999 123-45-67</text>
+  <rect x="620" y="735" width="360" height="58" rx="14" fill="#F5631A"/><text x="774" y="772" fill="#fff" font-family="Arial" font-size="20" font-weight="700">Дальше</text>
+</svg>

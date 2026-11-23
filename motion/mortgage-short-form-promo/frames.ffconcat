@@ -1,0 +1,14 @@
+ffconcat version 1.0
+file 'build/01-entry.jpg'
+duration 2.8
+file 'build/02-contacts.jpg'
+duration 2.4
+file 'build/03-purchase.jpg'
+duration 2.4
+file 'build/04-finance.jpg'
+duration 2.4
+file 'build/05-call.jpg'
+duration 2.4
+file 'build/06-success.jpg'
+duration 2.6
+file 'build/06-success.jpg'
